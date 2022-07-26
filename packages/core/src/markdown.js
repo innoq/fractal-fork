@@ -1,9 +1,9 @@
 'use strict';
 
-const marked = require('marked');
+const { marked, Renderer, lexer } = require('marked');
 const _ = require('lodash');
 const highlighter = require('./highlighter');
-const renderer = new marked.Renderer();
+const renderer = new Renderer();
 
 renderer.code = function (code, lang) {
     const output = highlighter(code, lang);
@@ -33,7 +33,7 @@ module.exports.toc = function (content, maxDepth, mdConfig) {
     mdConfig = mdConfig && _.isObject(mdConfig) ? mdConfig : {};
     mdConfig.renderer = renderer;
 
-    const tokens = marked.lexer(_.toString(content));
+    const tokens = lexer(_.toString(content));
 
     return tokens
         .filter((token) => {

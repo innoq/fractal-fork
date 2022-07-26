@@ -1,0 +1,76 @@
+.Frame {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    min-width: 280px;
+    overflow: hidden;
+}
+
+.Frame--full {
+    > .Error {
+        margin: 20px;
+    }
+}
+
+.Frame-header {
+    flex-shrink: 0;
+}
+
+.Frame-body {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-grow: 1;
+    height: calc(100% - 3rem);
+
+    @include mq($until: nav-collapse) {
+        @include margin-inline(end, $width-sidebar);
+
+        transform: translate3d(($width-sidebar * -1), 0, 0);
+        transition: none;
+    }
+}
+
+.Frame-inner {
+    @include trbl(0);
+
+    position: absolute;
+    height: 100%;
+    min-width: 280px;
+    overflow: auto;
+}
+
+.Frame-panel {
+    position: relative;
+    overflow: auto;
+}
+
+.Frame-panel--sidebar {
+    flex: 0 0 auto;
+    min-width: $width-sidebar;
+    max-width: ($width-sidebar * 2);
+    background-color: $color-background-offset;
+
+    @include mq($until: nav-collapse) {
+        max-width: $width-sidebar;
+    }
+}
+
+.Frame-panel--main {
+    flex: 1 1 auto;
+    position: relative;
+    z-index: 1;
+    overflow: auto;
+
+    &.is-loading {
+        background-image: url("../../img/loader.svg");
+        background-repeat: no-repeat;
+        background-position: 50%;
+
+        .Frame-inner {
+            display: none;
+        }
+    }
+}

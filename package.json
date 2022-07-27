@@ -45,6 +45,7 @@
     "path-to-regexp": "^6.2.1",
     "promised-handlebars": "^2.0.1",
     "readable-stream": "^4.1.0",
+    "require-all": "^3.0.0",
     "vinyl": "^2.2.1"
   },
   "devDependencies": {

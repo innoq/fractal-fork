@@ -2,6 +2,7 @@
   "name": "fractal-fork",
   "version": "0.0.1",
   "description": "A fork of the popular Fractal Pattern Library",
+  "main": "src/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/joyheron/fractal.git"
@@ -15,7 +16,7 @@
     "validate": "eslint",
     "format": "eslint -- --fix",
     "test": "npm run validate && npm run test:unit",
-    "test:unit": "jest --testPathPattern /test/fractal && jest --testPathPattern /test/core"
+    "test:unit": "jest --testPathPattern /test/fractal && jest --testPathPattern /test/core && jest --testPathPattern /test/web"
   },
   "dependencies": {
     "@allmarkedup/fang": "^2.0.0",
@@ -31,6 +32,7 @@
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.6.0",
     "istextorbinary": "^5.15.0",
+    "js-beautify": "^1.14.4",
     "js-yaml": "^4.1.0",
     "lodash": "^4.17.21",
     "log-update": "^4.0.0",

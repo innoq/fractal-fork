@@ -2,7 +2,7 @@
 
 const Handlebars = require('handlebars');
 const _ = require('lodash');
-const utils = require('@frctl/core').utils;
+const utils = require('../../../core').utils;
 
 module.exports = function (fractal) {
     return function render(handle) {

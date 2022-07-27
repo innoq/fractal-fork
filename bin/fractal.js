@@ -15,7 +15,7 @@ const notifier = updateNotifier({
 
 const FractalCli = new Liftoff({
     processTitle: 'fractal',
-    moduleName: '@frctl/fractal',
+    moduleName: 'fractal-fork',
     configName: 'fractal',
     extensions: {
         '.config.js': null,

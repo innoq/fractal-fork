@@ -5,9 +5,9 @@ const Path = require('path');
 const Handlebars = require('handlebars');
 const inquirer = require('inquirer');
 const execa = require('execa');
-const shell = require('@frctl/core').shell;
+const shell = require('../../../core').shell;
 const fs = require('fs-extra');
-const helpers = require('@frctl/core').utils;
+const helpers = require('../../../core').utils;
 
 module.exports = {
     command: 'new <path>',

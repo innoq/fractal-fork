@@ -123,7 +123,6 @@ module.exports = create;
 module.exports.create = create;
 module.exports.Fractal = Fractal;
 module.exports.WebTheme = require('../web').Theme;
-module.exports.CliTheme = require('./cli/theme');
 module.exports.Adapter = require('../core').Adapter;
 module.exports.log = require('../core').Log;
 module.exports.utils = require('../core').utils;

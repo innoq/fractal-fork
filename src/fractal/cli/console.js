@@ -5,23 +5,15 @@ const _ = require('lodash');
 const chalk = require('chalk');
 const Table = require('cli-table3');
 const slog = require('log-update');
-const Theme = require('./theme');
-const defaultTheme = require('./themes/default');
+const Theme = require('./themes/default');
 const utils = require('../../core').utils;
 
 class Console {
-    constructor(logger) {
-        this._logger = logger || console;
-        this._theme = defaultTheme;
+    constructor() {
+        this._logger = console;
+        this._theme = new Theme();
         this._slogging = false;
         this._debugging = false;
-    }
-
-    set theme(theme) {
-        if (!(theme instanceof Theme)) {
-            throw new Error('Fractal themes must inherit from the base Theme class.');
-        }
-        this._theme = theme;
     }
 
     get theme() {

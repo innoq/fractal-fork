@@ -3,7 +3,6 @@
 'use strict';
 
 const Path = require('path');
-const semver = require('semver');
 const Liftoff = require('liftoff');
 const chalk = require('chalk');
 const cliPackage = require('../package.json');
@@ -40,68 +39,42 @@ try {
 
 FractalCli.launch(config, function (env) {
     let app;
-    let scope = 'global';
     let configPath = env.configPath;
 
-    if (configPath) {
-        // Config file found - it's running in project context.
-        try {
-            app = require(configPath);
-            scope = 'project';
-        } catch (e) {
-            console.error(e.stack);
-            return;
-        }
+    if (!configPath) {
+        console.error("Please specify a configPath for your project context");
+        return;
+    }
+
+    try {
+        app = require(configPath);
+    } catch (e) {
+        console.error(e.stack);
+        return;
     }
 
     /*
-     * If it's a project context check compare the local Fractal version with the CLI version.
-     * Also check that the config file is correctly exporting a configured fractal instance.
-     *
-     * If it's not a global context, then import the global Fractal module and create a fresh instance.
+     * Check that the config file is correctly exporting a configured fractal instance.
      */
 
-    if (scope === 'project') {
-        // if (semver.lt(env.modulePackage.version, `1.0.0`)) {
-        //     // Project is using a legacy version of Fractal, load it the old way...
-        //     console.log(
-        //         `Fractal version mismatch! Global: ${cliPackage.version} / Local: ${env.modulePackage.version}`
-        //     );
-        //     let frctl = require(env.modulePath);
-        //     frctl.run();
-        //     return;
-        // }
+    if (!app || !app.__fractal) {
+        // looks like the configuration file is not correctly module.export'ing a fractal instance
+        console.log(
+            `${chalk.red(
+                'Configuration error'
+            )}: The CLI configuration file is not exporting an instance of Fractal.`
+        );
+        return;
+    }
 
-        if (!app || !app.__fractal) {
-            // looks like the configuration file is not correctly module.export'ing a fractal instance
-            console.log(
-                `${chalk.red(
-                    'Configuration error'
-                )}: The CLI configuration file is not exporting an instance of Fractal.`
-            );
-            return;
-        }
-
-        // Alert to any version mismatches.
-        if (semver.gt(cliPackage.version, env.modulePackage.version)) {
-            app.cli.notify.versionMismatch({
-                cli: cliPackage.version,
-                local: env.modulePackage.version,
-            });
-        }
-
-        if (Path.basename(configPath) === 'fractal.js') {
-            console.log(`Deprecated configuration file name! Rename fractal.js to fractal.config.js.`);
-        }
-    } else {
-        // Global context
-        app = require('../src').create();
+    if (Path.basename(configPath) === 'fractal.js') {
+        console.log(`Deprecated configuration file name! Rename fractal.js to fractal.config.js.`);
     }
 
     /*
      * Kick things off...
      */
 
-    app.cli.init(scope, configPath, env, cliPackage);
+    app.cli.init(configPath);
     app.cli.exec();
 });

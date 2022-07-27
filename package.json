@@ -16,7 +16,7 @@
     "validate": "eslint",
     "format": "eslint -- --fix",
     "test": "npm run validate && npm run test:unit",
-    "test:unit": "jest --testPathPattern /test/fractal && jest --testPathPattern /test/core && jest --testPathPattern /test/web"
+    "test:unit": "jest"
   },
   "dependencies": {
     "@allmarkedup/fang": "^2.0.0",
@@ -45,9 +45,7 @@
     "path-to-regexp": "^6.2.1",
     "promised-handlebars": "^2.0.1",
     "readable-stream": "^4.1.0",
-    "require-all": "^3.0.0",
-    "vinyl": "^2.2.1",
-    "vorpal": "^1.12.0"
+    "vinyl": "^2.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.14.0",

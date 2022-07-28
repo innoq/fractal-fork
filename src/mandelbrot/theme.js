@@ -121,7 +121,7 @@ module.exports = function (options) {
 
     theme.setErrorView('pages/error.nunj');
 
-    theme.addStatic(Path.join(__dirname, '..', 'dist'), `/${config.static.mount}`);
+    theme.addStatic(Path.join(__dirname, '../..', 'dist'), `/${config.static.mount}`);
 
     theme.addRoute('/', {
         handle: 'overview',

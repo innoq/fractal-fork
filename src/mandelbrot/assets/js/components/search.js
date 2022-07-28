@@ -1,6 +1,6 @@
 'use strict';
 
-import Mark from 'mark.js';
+import Mark from 'mark.js/src/vanilla';
 
 export default class Search {
     constructor(el, trees) {

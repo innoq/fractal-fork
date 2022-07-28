@@ -3,6 +3,7 @@
 import 'jquery';
 import 'jquery-pjax';
 
+import './global';
 import events from './events';
 import utils from './utils';
 import framer from './components/frame';

@@ -5,7 +5,6 @@
 const Path = require('path');
 const Liftoff = require('liftoff');
 const chalk = require('chalk');
-const cliPackage = require('../package.json');
 
 const FractalCli = new Liftoff({
     processTitle: 'fractal',

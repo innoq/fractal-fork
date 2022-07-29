@@ -36,7 +36,7 @@
     left: $val;
 }
 
-@mixin dragHandle {
+@mixin drag-handle {
     transition: all 0.15s ease-out;
 
     &:hover {

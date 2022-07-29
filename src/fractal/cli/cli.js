@@ -1,6 +1,5 @@
 'use strict';
 
-const _ = require('lodash');
 const chokidar = require('chokidar');
 const Console = require('./console');
 const Notifier = require('./notifier');
@@ -31,30 +30,13 @@ class Cli extends mix(Emitter) {
         }
     }
 
-    exec() {
-        return this._execFromArgv();
-    }
-
-    init(configPath) {
-        this._configPath = configPath;
-        return this;
-    }
-
-    get configPath() {
-        return this._configPath;
-    }
-
-    get cliPackage() {
-        return this._cliPackage;
-    }
-
     /**
      * Run a command by parsing argv
      * @return {Promise}
      */
-
-    _execFromArgv() {
+    exec() {
         const input = utils.parseArgv();
+
         const console = this.console;
         const app = this._app;
 
@@ -73,6 +55,19 @@ class Cli extends mix(Emitter) {
             command.fractal = app;
             command.action({ options: input.opts });
         });
+    }
+
+    init(configPath) {
+        this._configPath = configPath;
+        return this;
+    }
+
+    get configPath() {
+        return this._configPath;
+    }
+
+    get cliPackage() {
+        return this._cliPackage;
     }
 
     _watchConfigFile() {

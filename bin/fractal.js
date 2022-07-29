@@ -41,7 +41,7 @@ FractalCli.launch(config, function (env) {
     let configPath = env.configPath;
 
     if (!configPath) {
-        console.error("Please specify a configPath for your project context");
+        console.error('Please specify a configPath for your project context');
         return;
     }
 
@@ -59,9 +59,7 @@ FractalCli.launch(config, function (env) {
     if (!app || !app.__fractal) {
         // looks like the configuration file is not correctly module.export'ing a fractal instance
         console.log(
-            `${chalk.red(
-                'Configuration error'
-            )}: The CLI configuration file is not exporting an instance of Fractal.`
+            `${chalk.red('Configuration error')}: The CLI configuration file is not exporting an instance of Fractal.`
         );
         return;
     }

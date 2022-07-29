@@ -1,5 +1,5 @@
 'use strict';
 
 if (!window.global) {
-	window.global = window;
+    window.global = window;
 }

@@ -89,7 +89,7 @@
 }
 
 .Pen-handle {
-    @include dragHandle;
+    @include drag-handle;
 
     flex: 0 0 auto;
     height: $handle-size;

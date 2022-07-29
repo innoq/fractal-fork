@@ -81,7 +81,7 @@
 
 .Preview-handle {
     @include border-inline(start, 1px solid $color-frame-border);
-    @include dragHandle;
+    @include drag-handle;
     @include offset-inline(end, 0);
 
     position: absolute;

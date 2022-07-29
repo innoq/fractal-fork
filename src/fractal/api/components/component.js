@@ -2,9 +2,9 @@
 
 const _ = require('lodash');
 const Path = require('path');
-const utils = require('../../../core/utils');
-const Data = require('../../../core/data');
-const Entity = require('../../../core/entities').Entity;
+const utils = require('../../../core').utils;
+const Data = require('../../../core').data;
+const Entity = require('../../../core').entities.Entity;
 const VariantCollection = require('../variants/collection');
 const AssetCollection = require('../assets/collection');
 const Asset = require('../assets/asset');

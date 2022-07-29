@@ -4,7 +4,7 @@ fractal-fork version history
 unreleased
 ----------
 
-* tbd
+* [patch] removed `istextorbinary` to check if a file is binary and always parse with `utf-8`
 
 
 0.0.2

@@ -6,7 +6,6 @@ const co = require('co');
 const _ = require('lodash');
 const fs = require('fs-extra');
 const utils = require('./utils');
-const glob = require('globby');
 
 module.exports = {
     describe(dir, relDir, filter, ext) {
@@ -20,7 +19,8 @@ module.exports = {
         });
     },
 
-    globDescribe(dir, relDir, match) {
+    async globDescribe(dir, relDir, match) {
+        const glob = await import("globby");
         return glob(match, {
             cwd: dir,
         }).then((matches) => {

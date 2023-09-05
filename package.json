@@ -60,7 +60,7 @@
     "@babel/preset-env": "^7.22.15",
     "@babel/preset-react": "^7.22.15",
     "eslint": "^8.48.0",
-    "eslint-config-prettier": "^8.8.0",
+    "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.28.1",
     "eslint-plugin-prettier": "^5.0.0",
     "faucet-pipeline-esnext": "^3.0.0",
